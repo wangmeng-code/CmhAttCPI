@@ -29,16 +29,5 @@
 
 BindingDB.txt, DrugBank.txt, GPCR.txt and Davis.txt are provided at https://drive.google.com/drive/folders/1lfVZNHlpgdlBhozK_oeS1upU8NvpBOx6?usp=sharing
 
-# 5 fold data of BindingDB based on compound clustering
-./unseen setting/data/compound clustering/*.txt
-
-# 5 fold data of BindingDB based on protein clustering
-./unseen setting/data/protein clustering/*.txt
-
-# investigational or experimental drugs in DrugBank
-./dataset/case study/experimental_drugs.csv
-
-# driver genes of breast cancer
-./dataset/case study/driver_genes.csv
 
 
