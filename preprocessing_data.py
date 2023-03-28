@@ -136,7 +136,7 @@ if __name__ == "__main__":
     Kfolds = 5
     SEED = 1234
 
-    for fold in range(1):
+    for fold in range(Kfolds):
         if scenario == 'unseen setting':
             setting = cluster_cross_validation_setting
             threshold = cluster_threshold
