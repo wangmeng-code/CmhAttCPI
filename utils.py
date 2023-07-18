@@ -1,7 +1,6 @@
 import numpy as np
 import pickle
 from sklearn.metrics import mean_squared_error, precision_score, roc_auc_score
-#from sklearn.model_selection import KFold
 from sklearn.model_selection import KFold
 import time
 import torch
@@ -9,7 +8,6 @@ from torch import nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 import math
-# from metrics import *
 import random
 
 def setup_seed(seed):
