@@ -50,8 +50,3 @@ def Collate_fn(batch_data):
     label = torch.LongTensor(label)
 
     return (vertex_mask, vertex, edge, atom_adj, bond_adj, nbs_mask, seq_mask, sequence, label)
-   
-
-
-
-
