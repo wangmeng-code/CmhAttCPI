@@ -196,7 +196,3 @@ if __name__ == "__main__":
         print('ACC:' + str(result[1]))
         print('==========================================')
         results_df = results_df.append(pd.DataFrame({'AUC':[result[0]], 'Acc':[result[1]]}))
-
-
-
-
