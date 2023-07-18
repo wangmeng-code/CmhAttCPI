@@ -128,14 +128,19 @@ class CmhAttCPI(nn.Module):
             main_self = self.wln_unit(batch_size, vertex_mask, vertex_feature, edge_initial, atom_adj, bond_adj, nbs_mask, GWM_iter)  
 
             super_to_main = torch.tanh(self.W_super_to_main[GWM_iter](super_feature))
-
+            super_self = torch.tanh(self.W_super[GWM_iter](super_feature))
+            
             z_main = torch.sigmoid(self.W_zm1[GWM_iter](main_self) + self.W_zm2[GWM_iter](super_to_main)) 
             
             hidden_main = (1-z_main)*main_self + z_main*super_to_main
             
             vertex_feature = self.GRU_main(hidden_main.view(-1, self.hidden_size1), vertex_feature.view(-1, self.hidden_size1))  
-            
             vertex_feature = vertex_feature.view(batch_size, n_vertex, self.hidden_size1) 
+
+            z_supper = torch.sigmoid(self.W_zs1[GWM_iter](super_self) + self.W_zs2[GWM_iter](main_to_super))
+            hidden_super = (1-z_supper)*super_self + z_supper*main_to_super
+            super_feature = self.GRU_super(hidden_super.view(batch_size, self.hidden_size1), super_feature.view(batch_size, self.hidden_size1))
+            super_feature = super_feature.view(batch_size, 1, self.hidden_size1)
     
         return vertex_feature
     
