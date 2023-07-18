@@ -128,7 +128,6 @@ def pickle_dump(dictionary, file_name):
 
 if __name__ == "__main__":
     DATASET = 'BindingDB' # DATASET in ['BindingDB', 'DrugBank', 'GPCR', 'Davis']
-
     scenario = 'unseen setting'  # ['unseen setting', 'cross_validation']
     cluster_cross_validation_setting = 'compound clustering'  # if scenario is 'unseen setting', cluster_cross_validation_setting shold be set to 'compound clustering' or 'protein clustering'
     cluster_threshold = 0.5  # if scenario is 'unseen setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
