@@ -1,0 +1,39 @@
+## Requirements
+- python3.7
+- torch = 1.7.1+cu101
+- rdkit >= 2019.03.30
+- numpy >= 1.19.5
+- pandas >= 1.0.1
+- scikit-learn >= 1.0.2
+
+
+## install
+1.pytorch:
+Choose the suitable version Pytorch for your computers in https://pytorch.org/
+if install pytorch using conda, please use commond: 
+(1) gpu verision: conda install pytorch pytorch-cuda=11.8(#cuda version) -c pytorch -c nvidia
+(2) cpu verision:conda install pytorch -c pytorch
+if install pytorch without conda, please use commond:
+(1) gpu verision: pip3 install torch --index-url https://download.pytorch.org/whl/cu118(#cuda version)
+(2) cpu verision:pip3 install torch --index-url https://download.pytorch.org/whl/cpu
+
+
+2.rdkit
+Recommended for conda installations
+# Create a new environment and install
+conda create -c rdkit -n my-rdkit-env rdkit
+
+3.numpy
+pip3 install numpy
+
+4.pandas
+pip3 install pandas
+
+5.scikit-learn
+pip3 install scikit-learn
+
+
+
+
+
+
