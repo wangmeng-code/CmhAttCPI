@@ -31,9 +31,3 @@ pip3 install pandas
 
 5.scikit-learn
 pip3 install scikit-learn
-
-
-
-
-
-
