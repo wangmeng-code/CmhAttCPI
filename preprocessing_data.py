@@ -127,46 +127,46 @@ def pickle_dump(dictionary, file_name):
     pickle.dump(dict(dictionary), open(file_name, 'wb'), protocol=0)
 
 if __name__ == "__main__":
-    DATASET = 'BindingDB' # DATASET in ['BindingDB', 'DrugBank', 'GPCR', 'Davis']
-    scenario = 'unseen setting'  # ['unseen setting', 'cross_validation']
-    cluster_cross_validation_setting = 'compound clustering'  # if scenario is 'unseen setting', cluster_cross_validation_setting shold be set to 'compound clustering' or 'protein clustering'
-    cluster_threshold = 0.5  # if scenario is 'unseen setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
+    DATASET = 'BindingDB' # DATASET in ['BindingDB', 'DrugBank', 'GPCR', 'Davis', # 'user-dataset']
+    scenario = 'cross_validation'  # ['unseen_setting', 'cross_validation']
+    cluster_cross_validation_setting = 'compound_cluster'  # if scenario is 'unseen_setting', cluster_cross_validation_setting shold be set to 'compound_cluster' or 'protein_cluster'
+    cluster_threshold = 0.5  # if scenario is 'unseen_setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
 
     Kfolds = 5
     SEED = 1234
-
+    
     for fold in range(Kfolds):
-        if scenario == 'unseen setting':
+        if scenario == 'unseen_setting':
             setting = cluster_cross_validation_setting
             threshold = cluster_threshold
             
-            root_path = './unseen setting/data/'+ cluster_cross_validation_setting + '/'
+            root_path = './unseen_setting/'+ cluster_cross_validation_setting + '/' +DATASET+'/'
             print(str(fold) + 'fold data preparing...' )
             save_path = root_path + 'preprocessing/' + str(threshold) + '/'
             os.makedirs(save_path, exist_ok=True)
             
-            train_data = pd.read_csv(root_path + str(fold) +  'fold_' + str(threshold) + '_train.txt',sep=' ',header=None)
+            train_data = pd.read_csv(root_path + 'data/' + str(fold) +  'fold_' + str(threshold) + '_train.txt',sep=' ',header=None)
             train_data.columns = ['compound_iso_smiles','target_sequence','label']
         
-            val_data = pd.read_csv(root_path + str(fold) +  'fold_' + str(threshold) + '_val.txt',sep=' ',header=None)
+            val_data = pd.read_csv(root_path +'data/' +  str(fold) +  'fold_' + str(threshold) + '_val.txt',sep=' ',header=None)
             val_data.columns = ['compound_iso_smiles','target_sequence','label']
             
-            test_data = pd.read_csv(root_path + str(fold) +  'fold_' + str(threshold) + '_test.txt',sep=' ',header=None)
+            test_data = pd.read_csv(root_path + 'data/' + str(fold) +  'fold_' + str(threshold) + '_test.txt',sep=' ',header=None)
             test_data.columns = ['compound_iso_smiles','target_sequence','label']
             
         elif scenario == 'cross_validation':
-            root_path = './dataset/' + DATASET + '/5fold data/' 
+            root_path = './cross_validation/' + DATASET + '/5fold_data/' 
             print(str(fold) + 'fold data preparing...' )
             save_path = root_path + 'preprocessing/' 
             os.makedirs(save_path, exist_ok=True)
 
-            train_data = pd.read_csv(root_path  + str(fold) +  'fold_train.txt',sep=' ',header=None)
+            train_data = pd.read_csv(root_path  + str(fold) +  '_train.txt',sep=' ',header=None)
             train_data.columns = ['compound_iso_smiles','target_sequence','label']
         
-            val_data = pd.read_csv(root_path  + str(fold) + 'fold_val.txt',sep=' ',header=None)
+            val_data = pd.read_csv(root_path  + str(fold) + '_val.txt',sep=' ',header=None)
             val_data.columns = ['compound_iso_smiles','target_sequence','label']
             
-            test_data = pd.read_csv(root_path  + str(fold) + 'fold_test.txt',sep=' ',header=None)
+            test_data = pd.read_csv(root_path  + str(fold) + '_test.txt',sep=' ',header=None)
             test_data.columns = ['compound_iso_smiles','target_sequence','label']
 
     
@@ -196,6 +196,3 @@ if __name__ == "__main__":
         pickle_dump(atom_dict, save_path + str(fold) + 'fold_atom_dict')
         pickle_dump(bond_dict, save_path + str(fold) + 'fold_bond_dict')
         pickle_dump(word_dict, save_path + str(fold) + 'fold_word_dict')
-
-        
-        
