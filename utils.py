@@ -123,7 +123,7 @@ def data_from_pack(data_pack):
 
 
 def load_data(fold, thred, root_path, dataset, scenario):
-    if scenario == 'unseen setting':
+    if scenario == 'unseen_setting':
         with open(root_path + 'preprocessing/' + str(thred) +'/'+ str(fold) +'fold_' + dataset + '_input','rb') as f:
             data_pack = pickle.load(f)
     else:
@@ -132,8 +132,13 @@ def load_data(fold, thred, root_path, dataset, scenario):
 
     return data_pack
 
+def load_test_data(root_path):
+    with open(root_path + 'preprocessing/test_input','rb') as f:
+        test_data_pack = pickle.load(f)
+    return test_data_pack
+
 def load_dict(fold, thred, root_path, scenario):
-    if scenario == 'unseen setting':
+    if scenario == 'unseen_setting':
         f = open(root_path + 'preprocessing/' + str(thred) +'/'+ str(fold) + 'fold_atom_dict','rb')
         atom_dict = pickle.load(f)
         f.close()
@@ -172,3 +177,30 @@ def load_dict(fold, thred, root_path, scenario):
     init_bond_features = torch.FloatTensor(init_bond_features)
     
     return init_atom_features, init_bond_features, word_dict
+
+def load_test_dict(root_path):
+    f = open(root_path + 'preprocessing/test_atom_dict','rb')
+    test_atom_dict = pickle.load(f)
+    f.close()
+    
+    f = open(root_path + 'preprocessing/test_bond_dict','rb')
+    test_bond_dict = pickle.load(f)
+    f.close()
+
+    f = open(root_path + 'preprocessing/test_word_dict','rb')
+    test_word_dict = pickle.load(f)
+    f.close()
+
+    test_init_atom_features = np.zeros((len(test_atom_dict), test_atom_fdim))
+    test_init_bond_features = np.zeros((len(test_bond_dict), test_bond_fdim))
+    
+    for key,value in atom_dict.items():
+        test_init_atom_features[value] = np.array(list(map(int, key)))
+    
+    for key,value in bond_dict.items():
+        test_init_bond_features[value] = np.array(list(map(int, key)))
+    
+    test_init_atom_features = torch.FloatTensor(test_init_atom_features)
+    test_init_bond_features = torch.FloatTensor(test_init_bond_features)
+    
+    return test_init_atom_features, test_init_bond_features, test_word_dict
