@@ -79,8 +79,8 @@ class CmhAttCPI(nn.Module):
         self.Dropout_cnn = nn.Dropout(self.dropout_cnn)
         
         """ Cross multi-head attention module """
-        self.multihead_attn_d_to_p = nn.MultiheadAttention(embed_dim=self.hidden_size*2, num_heads=self.num_heads[1], kdim=self.cnn_hid_dim*2, vdim=self.cnn_hid_dim*2)
-        self.multihead_attn_p_to_d = nn.MultiheadAttention(embed_dim=self.cnn_hid_dim*2, num_heads=self.num_heads[0], kdim=self.hidden_size*2, vdim=self.hidden_size*2)
+        self.multihead_attn_p_to_d = nn.MultiheadAttention(embed_dim=self.hidden_size*2, num_heads=self.num_heads[1], kdim=self.cnn_hid_dim*2, vdim=self.cnn_hid_dim*2)
+        self.multihead_attn_d_to_p = nn.MultiheadAttention(embed_dim=self.cnn_hid_dim*2, num_heads=self.num_heads[0], kdim=self.hidden_size*2, vdim=self.hidden_size*2)
 
     
         """ Interaction prediction """
@@ -172,6 +172,7 @@ class CmhAttCPI(nn.Module):
         feats = [self.elu(self.conv_bn(self.conv[i](p_feats.transpose(2,1)))) for i in range(len(self.conv))]
         
         prot_feats = torch.cat(feats, 1) 
+        
         prot_feats = self.Dropout_cnn(self.elu(self.p_fc_bn(self.p_fc(prot_feats.transpose(2,1)).transpose(2,1))))
         return prot_feats.transpose(2,1)
 
@@ -181,13 +182,13 @@ class CmhAttCPI(nn.Module):
         vertex_mask = vertex_mask.bool() == False
         seq_mask = seq_mask.bool() == False
 
-        compound_att_output, compound_scores = self.multihead_attn_d_to_p(query=compound_feature.transpose(1,0), key=prot_feature.transpose(1,0),\
+        compound_att_output, _ = self.multihead_attn_p_to_d(query=compound_feature.transpose(1,0), key=prot_feature.transpose(1,0),\
                                                       value=prot_feature.transpose(1,0), key_padding_mask=seq_mask.bool())
 
-        prot_att_output, prot_scores = self.multihead_attn_p_to_d(query=prot_feature.transpose(1,0), key=compound_feature.transpose(1,0),\
+        prot_att_output, _ = self.multihead_attn_d_to_p(query=prot_feature.transpose(1,0), key=compound_feature.transpose(1,0),\
                                                       value=compound_feature.transpose(1,0), key_padding_mask=vertex_mask.bool())
          
-        return compound_att_output.transpose(1,0), compound_scores, prot_att_output.transpose(1,0), prot_scores
+        return compound_att_output.transpose(1,0), prot_att_output.transpose(1,0)
 
 
     def CPI_pred_module(self, atom_feature, compound_att_output, vertex_mask, prot_feature, prot_att_output, seq_mask):
@@ -221,7 +222,7 @@ class CmhAttCPI(nn.Module):
         
         prot_feature = self.CNN_model(sequence)
         atom_feature = self.GCW_module(batch_size, vertex_mask, vertex, edge, atom_adj, bond_adj, nbs_mask)
-        compound_att, compound_scores, prot_att, prot_scores= self.Attention_module(atom_feature, prot_feature, vertex_mask, seq_mask)
+        compound_att, prot_att = self.Attention_module(atom_feature, prot_feature, vertex_mask, seq_mask)
 
         pred_output = self.CPI_pred_module(atom_feature, compound_att, vertex_mask, prot_feature, prot_att, seq_mask)
 
