@@ -12,9 +12,7 @@ run: python train.py
 -step1- Users need to disposal data format (user-dataset.txt) as follows:
 
 +------+--------+-----+
-
 |SMILES|Sequence|Label|
-
 +------+--------+-----+
 
 -step2- Splitting dataset. run:python kfold_split_data.py
