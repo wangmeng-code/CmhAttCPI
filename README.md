@@ -10,18 +10,15 @@ run: python train.py
 
 # 1.1 Training model on user-provided datasets
 -step1- Users need to disposal data format (user-dataset.txt) as follows:
-+------------------------------------------+--------------------------------------------------+-----+
-|SMILES                                    |Sequence                                          |Label|
-+------------------------------------------+--------------------------------------------------+-----+
-|C[C@H](C1=CC=C(C=C1)Cl)NC2=NC3=C(C=NN3C   |DVNTHRPREYWDYESHVVEWGNQDDYQLVRKLGRGKYSEVFEAINITNNE|     |
-|(=N2)NC4CC4)/C=C\5/C(=O)NC(=O)N5          |KVVVKILKPVKKKKIKREIKILENLRGGPNIITLADIVKDPVSRTPALVF|     |
-|                                          |EHVNNTDFKQLYQTLTDYDIRFYMYEILKALDYCHSMGIMHRDVKPHNVM|     |
-|                                          |IDHEHRKLRLIDWGLAEFYHPGQEYNVRVASRYFKGPELLVDYQMYDYSL|     |
-|                                          |DMWSLGCMLASMIFRKEPFFHGHDNYDQLVRIAKVLGTEDLYDYIDKYNI|  1  |  
-|                                          |ELDPRFNDILGRHSRKRWERFVHSENQHLVSPEALDFLDKLLRYDHQSRL|     |
-|                                          |TAREAMEHPYFYTVVKDQARMGSSSMPGGSTPVSSANMMSGISSVPTPSP|     |
-|                                          |LGPLAGSPVIAAANPLGMPVPAAAGAQQ                      |     |
-+------------------------------------------+--------------------------------------------------+-----+
++--------------------------+-----------------------------+-----+
+|SMILES                    |Sequence                     |Label|
++--------------------------+-----------------------------+-----+
+|C[C@H](C1=CC=C(C=C1)Cl)NC2|DVNTHRPREYWDYESHVVEWGNQDDYQLV|     |
+|=NC3=C(C=NN3C(=N2)NC4CC4) |RKLGRGKYSEVFEAINITNNEKVVVKILK|   1 |
+|/C=C\5/C(=O)NC(=O)N5      |               ……            |     |
+|                          |FYMYEILKALDYCHSMGIMHRDVKPHNVM|     |
+|                          |LGPLAGSPVIAAANPLGMPVPAAAGAQQ |     |
++--------------------------+-----------------------------+-----+
 -step2- Splitting dataset. run:python kfold_split_data.py
 -step3-  run:python preprocessing_data.py ('DATASET' should be set to 'user-dataset', 'scenario' should be set to 'cross_validation')
 -step4-  run:python train.py
