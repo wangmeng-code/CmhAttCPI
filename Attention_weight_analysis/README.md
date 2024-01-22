@@ -4,6 +4,7 @@
 
 ## obtaining attention weights
 --step1-- First, disposal data format (test.txt) as follows:
+
 +-------------------------------+------------------------------------------------------+-------+
 |SMILES                         |Sequence                                              |Label  |
 +-------------------------------+------------------------------------------------------+-------+
@@ -15,6 +16,7 @@
 |                               |KMNFANVFIGANPLAVDLLEKMLVLDSDKRITAAQALAHAYFAQYHDPDDEPVA|       |
 |                               |DPYDQSFESRDLLIDEWKSLTYDEVISFVPPPLDQEEMES              |       |
 +-------------------------------+------------------------------------------------------+-------+
+
 --step2--  run: python preprocessing_data_test.py
 --step3--  run: python get_attention_weight.py
 
