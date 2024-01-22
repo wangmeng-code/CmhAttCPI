@@ -76,10 +76,10 @@ def predicting(model, device, eval_loader):
 
 if __name__ == "__main__":
     
-    scenario = 'cross_validation'     # ['unseen setting', 'cross_validation']
-    DATASET = 'BindingDB'
-    setting = 'compound clustering'    # if scenario is 'unseen setting', cluster_cross_validation_setting shold be set to 'compound clustering' or 'protein clustering'
-    thred = 0.5    # if scenario is 'unseen setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
+    scenario = 'cross_validation'     # ['unseen_setting', 'cross_validation']
+    DATASET = 'BindingDB'   # DATASET in ['BindingDB', 'DrugBank', 'GPCR', 'Davis', # 'user-dataset']
+    setting = 'compound_cluster'    # if scenario is 'unseen_setting', cluster_cross_validation_setting shold be set to 'compound_cluster' or 'protein_cluster'
+    thred = 0.5    # if scenario is 'unseen_setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
     Kfolds = 5
 
     TRAIN_BATCH_SIZE = 128
@@ -92,8 +92,7 @@ if __name__ == "__main__":
     SEED = 1234
     
     cuda_name = "cuda:1"
-    num_features_xd=78
-    num_features_xt=25
+    num_features_xd=82
     
     num_heads=[1,4] 
     embed_dim=128
@@ -103,19 +102,20 @@ if __name__ == "__main__":
     dropout_cnn = 0
     cnn_hid_dim = 64
     num_layers=2
-
-    if scenario == 'unseen setting':
-        root_path = './unseen setting/data/'+ setting + '/'
-        save_path = root_path + 'results/' + str(thred) + 'thred/'
+    
+    
+    if scenario == 'unseen_setting':
+        root_path = './'+scenario+'/'+ setting+ '/'+ DATASET + '/'
+        save_path = root_path + 'results/' + str(thred) + '_thred/'
         os.makedirs(save_path, exist_ok=True)
 
-        if setting == 'compound clustering':
+        if setting == 'compound_cluster':
             GNN_depth, CNN_depth, k_head, kernel_size, hidden_size1, hidden_size2 = 4, 1, 2, 5, 128, 128
-        elif setting == 'protein clustering':
+        elif setting == 'protein_cluster':
             GNN_depth, CNN_depth, k_head, kernel_size, hidden_size1, hidden_size2 = 4, 3, 1, 5, 128, 128
 
     else:
-        root_path = './dataset/' + DATASET + '/5fold data/'
+        root_path = './'+scenario+'/' + DATASET + '/5fold_data/'
         save_path = root_path + 'results/'
         os.makedirs(save_path, exist_ok=True)
         
