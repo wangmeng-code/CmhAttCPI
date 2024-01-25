@@ -76,10 +76,10 @@ def predicting(model, device, eval_loader):
 
 if __name__ == "__main__":
     
-    scenario = 'cross_validation'     # ['unseen_setting', 'cross_validation']
+    scenario = 'cross_validation'     # ['unknown_setting', 'cross_validation']
     DATASET = 'BindingDB'   # DATASET in ['BindingDB', 'DrugBank', 'GPCR', 'Davis', # 'user-dataset']
-    setting = 'compound_cluster'    # if scenario is 'unseen_setting', cluster_cross_validation_setting shold be set to 'compound_cluster' or 'protein_cluster'
-    thred = 0.5    # if scenario is 'unseen_setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
+    setting = 'compound_cluster'    # if scenario is 'unknown_setting', cluster_cross_validation_setting shold be set to 'compound_cluster' or 'protein_cluster'
+    thred = 0.5    # if scenario is 'unknown_setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
     Kfolds = 5
 
     TRAIN_BATCH_SIZE = 128
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     num_layers=2
     
     
-    if scenario == 'unseen_setting':
+    if scenario == 'unknown_setting':
         root_path = './'+scenario+'/'+ setting+ '/'+ DATASET + '/'
         save_path = root_path + 'results/' + str(thred) + '_thred/'
         os.makedirs(save_path, exist_ok=True)
