@@ -128,19 +128,19 @@ def pickle_dump(dictionary, file_name):
 
 if __name__ == "__main__":
     DATASET = 'BindingDB' # DATASET in ['BindingDB', 'DrugBank', 'GPCR', 'Davis', # 'user-dataset']
-    scenario = 'cross_validation'  # ['unseen_setting', 'cross_validation']
-    cluster_cross_validation_setting = 'compound_cluster'  # if scenario is 'unseen_setting', cluster_cross_validation_setting shold be set to 'compound_cluster' or 'protein_cluster'
-    cluster_threshold = 0.5  # if scenario is 'unseen_setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
+    scenario = 'cross_validation'  # ['unknown_setting', 'cross_validation']
+    cluster_cross_validation_setting = 'compound_cluster'  # if scenario is 'unknown_setting', cluster_cross_validation_setting shold be set to 'compound_cluster' or 'protein_cluster'
+    cluster_threshold = 0.5  # if scenario is 'unknown_setting', cluster_cross_validation_setting shold be set to one of [0.3, 0.4, 0.5]
 
     Kfolds = 5
     SEED = 1234
     
     for fold in range(Kfolds):
-        if scenario == 'unseen_setting':
+        if scenario == 'unknown_setting':
             setting = cluster_cross_validation_setting
             threshold = cluster_threshold
             
-            root_path = './unseen_setting/'+ cluster_cross_validation_setting + '/' +DATASET+'/'
+            root_path = './unknown_setting/'+ cluster_cross_validation_setting + '/' +DATASET+'/'
             print(str(fold) + 'fold data preparing...' )
             save_path = root_path + 'preprocessing/' + str(threshold) + '/'
             os.makedirs(save_path, exist_ok=True)
