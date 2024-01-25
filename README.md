@@ -28,19 +28,19 @@ run: python train.py
 
 
 ## 2. Generalization evaluation
--step1-  './unseen_setting/file_preparation.py': preparating files for clustering. 
+-step1-  './unknown_setting/file_preparation.py': preparating files for clustering. 
 run: python file_preparation.py
 
--step2-  './unseen_setting/clustering.py': clustering for compounds and proteins. 
+-step2-  './unknown_setting/clustering.py': clustering for compounds and proteins. 
 run: python clustering.py
 
--step3-  './unseen_setting/split_dataset_according_clustering.py': spliting dataset into train/val/test set based on clustering. 
+-step3-  './unknown_setting/split_dataset_according_clustering.py': spliting dataset into train/val/test set based on clustering. 
 run:python split_dataset_according_clustering.py
 
--step4-  './preprocessing_data.py': 'scenario' should be 'unseen_setting', 'cluster_cross_validation_setting' and 'cluster_threshold' should be set a fixed value from ['compound_clustering_unseen', 'protein_cluster_unseen', 'both_unseen'] and [0.3,0.4,0.5], respectively
+-step4-  './preprocessing_data.py': 'scenario' should be 'unknown_setting', 'cluster_cross_validation_setting' and 'cluster_threshold' should be set a fixed value from ['compound_clustering_unknown', 'protein_cluster_unknown', 'both_unknown'] and [0.3,0.4,0.5], respectively
 run: preprocessing_data.py
 
--step5-  './train.py': 'scenario' should be 'unseen_setting', 'setting' and 'cluster_threshold' should be set a fixed value from ['compound_clustering_unseen', 'protein_cluster_unseen', 'both_unseen'] and [0.3,0.4,0.5], respectively
+-step5-  './train.py': 'scenario' should be 'unknown_setting', 'setting' and 'cluster_threshold' should be set a fixed value from ['compound_clustering_unknown', 'protein_cluster_unknown', 'both_unknown'] and [0.3,0.4,0.5], respectively
 run:train.py
 
 # 2.1 Training model on user-provided datasets
@@ -52,7 +52,7 @@ Splitting data into train/val/test set based on clustering:
 -step4- run:split_dataset_according_clustering.py 
 
 Traing model:
--step5-  After splitting data based on cluster then preprocessing data. run:python preprocessing_data.py ('DATASET' set to 'user-dataset', 'scenario' to 'unseen_setting','cluster_cross_validation_setting' and 'cluster_threshold' should be set a fixed value from ['compound_clustering_unseen', 'protein_cluster_unseen', 'both_unseen'] and [0.3,0.4,0.5], respectively)
+-step5-  After splitting data based on cluster then preprocessing data. run:python preprocessing_data.py ('DATASET' set to 'user-dataset', 'scenario' to 'unknown_setting','cluster_cross_validation_setting' and 'cluster_threshold' should be set a fixed value from ['compound_clustering_unknown', 'protein_cluster_unknown', 'both_unknown'] and [0.3,0.4,0.5], respectively)
 -step6-  Training model. run:python train.py 
 
 # 2.2 Applying pre-trained model on user-provided datasets
