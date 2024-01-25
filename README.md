@@ -1,7 +1,7 @@
 ### A bidirectional Interpretable compound-protein interaction prediction framework based on cross attention
 
 ### Scripts
-## 1. Performance evaluation on BindingDB, DrugBank, GPCR and Davis datasets
+## 1. Performance evaluation
 -step1-  './preprocessing_data.py': converting SMILES to molecular graph and constructing word dictionary for protein sequence (scenario should be 'cross_validation')
 run: python preprocessing_data.py
 
@@ -27,7 +27,7 @@ run: python train.py
 -step3-  run:python predict.py 
 
 
-## 2. Generalization evaluation in the unseen setting for cluster-cross validation
+## 2. Generalization evaluation
 -step1-  './unseen_setting/file_preparation.py': preparating files for clustering. 
 run: python file_preparation.py
 
