@@ -123,7 +123,7 @@ def data_from_pack(data_pack):
 
 
 def load_data(fold, thred, root_path, dataset, scenario):
-    if scenario == 'unseen_setting':
+    if scenario == 'unknown_setting':
         with open(root_path + 'preprocessing/' + str(thred) +'/'+ str(fold) +'fold_' + dataset + '_input','rb') as f:
             data_pack = pickle.load(f)
     else:
@@ -138,7 +138,7 @@ def load_test_data(root_path):
     return test_data_pack
 
 def load_dict(fold, thred, root_path, scenario):
-    if scenario == 'unseen_setting':
+    if scenario == 'unknown_setting':
         f = open(root_path + 'preprocessing/' + str(thred) +'/'+ str(fold) + 'fold_atom_dict','rb')
         atom_dict = pickle.load(f)
         f.close()
