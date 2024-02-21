@@ -1,5 +1,5 @@
 #!/bin/bash
-scenario='unknown_setting'  # ['unknown_setting', 'cross_validation']
+scenario='cross_validation'  # ['unknown_setting', 'cross_validation']
 
 TRAIN_BATCH_SIZE=128
 VAL_BATCH_SIZE=128
