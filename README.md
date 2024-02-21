@@ -14,7 +14,7 @@ Train model with the following command:
 ```
 bash Run_Train.sh
 ```
-The parameter 'scenario' in Run_Train.sh should be set to 'cross_validation'
+The parameter 'scenario' in Run_Train.sh should be set to 'cross_validation'.
 
 # (2) cluster-cross validation
 # Usage
@@ -24,15 +24,15 @@ The parameter 'scenario' in Run_Train.sh should be set to 'cross_validation'
 
 -- ./split_dataset_according_clustering.py Spliting dataset into train/val/test set based on clustering. 
 
--- ./preprocessing_data.py Converting SMILESs to molecular graphs and constructing word dictionary for protein sequences
+-- ./preprocessing_data.py Converting SMILESs to molecular graphs and constructing word dictionary for protein sequences.
 
--- ./train.py Training model
+-- ./train.py Training model.
 
 Train model with the following command:
 ```
 bash Run_Train.sh
 ```
-The parameter 'scenario' in Run_Train.sh should be set to 'unknown_setting'
+The parameter 'scenario' in Run_Train.sh should be set to 'unknown_setting'.
 
 
 ## 2. Applying pre-trained model on test data
