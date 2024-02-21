@@ -6,9 +6,9 @@
 # Usage
 We provided two major scripts for training model:
 
--- ./preprocessing_data.py converting SMILESs to molecular graphs and constructing word dictionary for protein sequences
+-- ./preprocessing_data.py Converting SMILESs to molecular graphs and constructing word dictionary for protein sequences.
 
--- ./train.py training model
+-- ./train.py Training model.
 
 Train model with the following command:
 ```
@@ -18,15 +18,15 @@ The parameter 'scenario' in Run_Train.sh should be set to 'cross_validation'
 
 # (2) cluster-cross validation
 # Usage
--- ./file_preparation.py preparating files for clustering. 
+-- ./file_preparation.py Preparating files for clustering. 
 
--- ./clustering.py clustering for compounds and proteins. 
+-- ./clustering.py Clustering for compounds and proteins. 
 
--- ./split_dataset_according_clustering.py spliting dataset into train/val/test set based on clustering. 
+-- ./split_dataset_according_clustering.py Spliting dataset into train/val/test set based on clustering. 
 
--- ./preprocessing_data.py converting SMILESs to molecular graphs and constructing word dictionary for protein sequences
+-- ./preprocessing_data.py Converting SMILESs to molecular graphs and constructing word dictionary for protein sequences
 
--- ./train.py training model
+-- ./train.py Training model
 
 Train model with the following command:
 ```
@@ -39,9 +39,9 @@ The parameter 'scenario' in Run_Train.sh should be set to 'unknown_setting'
 # Usage
 We provided two major scripts for predicting test data:
 
--- ./preprocessing_test_data converting SMILESs of the test data to molecular graphs and constructing word dictionary for protein sequences of the test data.
+-- ./preprocessing_test_data.py Converting SMILESs of the test data to molecular graphs and constructing word dictionary for protein sequences of the test data.
 
--- ./predict.py make predictions on the test data.
+-- ./predict.py Make predictions on the test data.
 
 Predict on the test data with the following command:
 ```
@@ -50,5 +50,5 @@ bash Run_Predicting.sh
 
 
 ### Data
-## 5-fold data of BindingDB, DrugBank, GPCR and Davis
+## Four CPI datasets: BindingDB, DrugBank, GPCR and Davis
 The original datset BindingDB.txt, DrugBank.txt, GPCR.txt and Davis.txt are provided at https://drive.google.com/drive/folders/1lfVZNHlpgdlBhozK_oeS1upU8NvpBOx6?usp=sharing
