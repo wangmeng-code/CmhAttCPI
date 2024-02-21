@@ -145,15 +145,12 @@ if __name__ == "__main__":
             print(str(fold) + 'fold data preparing...' )
 
             train_data = pd.read_csv(kfold_data_path  + str(fold) +  '_train.txt',sep=' ',header=None)
-            train_data = train_data.iloc[:50,:]
             train_data.columns = ['compound_iso_smiles','target_sequence','label']
         
             val_data = pd.read_csv(kfold_data_path  + str(fold) + '_val.txt',sep=' ',header=None)
-            val_data = val_data.iloc[:50,:]
             val_data.columns = ['compound_iso_smiles','target_sequence','label']
             
             test_data = pd.read_csv(kfold_data_path  + str(fold) + '_test.txt',sep=' ',header=None)
-            test_data = test_data.iloc[:50,:]
             test_data.columns = ['compound_iso_smiles','target_sequence','label']
 
         elif scenario == 'unknown_setting':
