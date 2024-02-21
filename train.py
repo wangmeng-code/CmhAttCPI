@@ -134,6 +134,7 @@ if __name__ == "__main__":
     results_df = pd.DataFrame(columns=('AUC', 'Acc'))
     
     for fold in range(Kfolds):
+        print('-'*25 + ' training on fold ' + str(fold) + ' data ' + '-'*25)
         train_data_pack = load_data(fold, preprocessed_data_path, 'train')
         val_data_pack = load_data(fold, preprocessed_data_path, 'val')
         test_data_pack = load_data(fold, preprocessed_data_path, 'test')
