@@ -91,7 +91,7 @@ if __name__ == "__main__":
             embed_dim, dropout, hidden_size, kernels, dropout_cnn, cnn_hid_dim, num_heads, num_layers, N_word, \
             params).to(device)
     
-    result_file_name = save_results_path +  'user_datset_test_result.csv'
+    result_file_name = save_results_path +  'predict_result.csv'
     
     # model loading
     model.load_state_dict(torch.load(model_path))
