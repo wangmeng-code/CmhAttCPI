@@ -51,4 +51,4 @@ bash Run_Predicting.sh
 
 ### Data
 ## Four CPI datasets: BindingDB, DrugBank, GPCR and Davis
-The original datset BindingDB.txt, DrugBank.txt, GPCR.txt and Davis.txt are provided at https://drive.google.com/drive/folders/1lfVZNHlpgdlBhozK_oeS1upU8NvpBOx6?usp=sharing
+The datsets BindingDB.txt, DrugBank.txt, GPCR.txt and Davis.txt used in this study are provided at https://drive.google.com/drive/folders/1lfVZNHlpgdlBhozK_oeS1upU8NvpBOx6?usp=sharing
