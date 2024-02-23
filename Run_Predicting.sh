@@ -4,7 +4,9 @@
 testdata_path='./Predicting_user-dataset/prediction_data.txt'
 
 # path of the preprocessed training data used for pretraining the model
-dict_path='./Davis/preprocessing/'
+atom_dict_path='./Davis/preprocessing/0fold_atom_dict'
+bond_dict_path='./Davis/preprocessing/0fold_bond_dict'
+word_dict_path='./Davis/preprocessing/0fold_word_dict'
 
 # path of saving preprocessed test data 
 save_preprocessed_data_path='./Predicting_user-dataset/preprocessing/'
@@ -30,5 +32,5 @@ dropout_cnn=0
 cnn_hid_dim=64
 num_layers=2
 
-python preprocessing_test_data.py $testdata_path $dict_path $save_preprocessed_data_path &&
+python preprocessing_test_data.py $testdata_path $atom_dict_path $bond_dict_path $word_dict_path $save_preprocessed_data_path &&
 python predict.py $cuda_name $save_preprocessed_data_path $model_path $save_results_path $TRAIN_BATCH_SIZE $num_features_xd $num_head1 $num_head2 $embed_dim $dropout $hidden_size $kernel1 $kernel2 $kernel3 $dropout_cnn $cnn_hid_dim $num_layers
