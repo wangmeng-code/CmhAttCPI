@@ -3,7 +3,7 @@
 # path of test data (user-provided datasets)
 testdata_path='./Predicting_user-dataset/prediction_data.txt'
 
-# path of information related to preprocessing training data
+# path of the preprocessed training data used for pretraining the model
 dict_path='./Davis/preprocessing/'
 
 # path of saving preprocessed test data 
