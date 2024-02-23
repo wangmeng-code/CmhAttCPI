@@ -6,7 +6,7 @@
 # Usage
 We provided two major scripts for training model:
 
--- ./preprocessing_data.py Converting SMILESs to molecular graphs and constructing word dictionary for protein sequences.
+-- ./preprocessing_data.py Converting SMILES strings to molecular graphs and constructing word dictionary for protein sequences.
 
 -- ./train.py Training model.
 
@@ -24,7 +24,7 @@ The parameter 'scenario' in Run_Train.sh should be set to 'cross_validation'.
 
 -- ./split_dataset_according_clustering.py Spliting dataset into train/val/test set based on clustering. 
 
--- ./preprocessing_data.py Converting SMILESs to molecular graphs and constructing word dictionary for protein sequences.
+-- ./preprocessing_data.py Converting SMILES strings to molecular graphs and constructing word dictionary for protein sequences.
 
 -- ./train.py Training model.
 
@@ -39,7 +39,7 @@ The parameter 'scenario' in Run_Train.sh should be set to 'unknown_setting'.
 # Usage
 We provided two major scripts for predicting test data:
 
--- ./preprocessing_test_data.py Converting SMILESs of the test data to molecular graphs and constructing word dictionary for protein sequences of the test data.
+-- ./preprocessing_test_data.py Converting SMILES strings of the test data to molecular graphs and constructing word dictionary for protein sequences of the test data.
 
 -- ./predict.py Make predictions on the test data.
 
