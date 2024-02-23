@@ -141,7 +141,7 @@ if __name__ == "__main__":
     SEED = 1234
     print('*'*20 + ' Preprocessing test data... ' + '*'*20)
     
-    testdata_path, dict_path, save_preprocessed_data_path = sys.argv[1:]
+    testdata_path, atom_dict_path, bond_dict_path, word_dict_path, save_preprocessed_data_path = sys.argv[1:]
     os.makedirs(save_preprocessed_data_path, exist_ok=True)
     
     print('user test data preparing...' )
@@ -149,9 +149,9 @@ if __name__ == "__main__":
     test_data.columns = ['compound_iso_smiles','target_sequence']
 
     # initialize feature dicts
-    atom_dict = pickle_load(dict_path + '0fold_atom_dict')
-    bond_dict = pickle_load(dict_path + '0fold_bond_dict')
-    word_dict = pickle_load(dict_path + '0fold_word_dict')
+    atom_dict = pickle_load(atom_dict_path)
+    bond_dict = pickle_load(bond_dict_path)
+    word_dict = pickle_load(word_dict_path)
     
     print('testing dataset generating inputs...')
     test_data_pack = generate_input(test_data)
