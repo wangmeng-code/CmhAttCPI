@@ -3,7 +3,7 @@
 # path of test data (user-provided datasets)
 testdata_path='./Predicting_user-dataset/prediction_data.txt'
 
-# path of the preprocessed training data used for pretraining the model
+# paths of the preprocessed training data used for pretraining the model
 atom_dict_path='./Davis/preprocessing/0fold_atom_dict'
 bond_dict_path='./Davis/preprocessing/0fold_bond_dict'
 word_dict_path='./Davis/preprocessing/0fold_word_dict'
